@@ -1,12 +1,18 @@
-<h2><%=@task.title%></h2>
-<p><%=@task.details%></p>
-<p><%=@task.completed%></p>
+<div class="container">
+  <h1>Details of the task</h1>
+    <h2><%=@task.title%></h2>
+  <section>
+    <p><%=@task.details%></p>
+    <p><%=@task.completed%></p>
+  </section>
+  <section>
+    <%= link_to "Edit task", edit_path, class: "btn btn-info" %>
+    <!-- link_to "Fed up delete it!", destroy_path renvoi sur un get -->
+    <%= link_to "Back to list", tasks_path, class: "btn btn-info" %>
+    <%= link_to "Fed up with #{@task.title} delete it!",
+                task_path(@task), class: "btn btn-info",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+  </section>
 
-
-<%= link_to "Edit task", edit_path %>
-<!-- link_to "Fed up delete it!", destroy_path renvoi sur un get -->
-<%= link_to "Back to list", tasks_path %>
-<%= link_to "Fed up delete with #{@task.title}",
-            task_path(@task),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+</div>
